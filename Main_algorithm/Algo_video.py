@@ -34,7 +34,7 @@ import pickle
 from keras.preprocessing.image import img_to_array
 from tensorflow.keras.optimizers import Adam
  
-model = load_model('model2.model')
+model = load_model('model.h5')
 
 EPOCHS = 50
 INIT_LR = 1e-3
@@ -63,9 +63,8 @@ model.compile(optimizer=opt, loss=losses, loss_weights=lossWeights,
 
 
 
-f = open("type_lb.pickle","rb")
-
-typeLB = pickle.loads(f.read())
+#f = open("type_lb.pickle","rb")
+#typeLB = pickle.loads(f.read())
 
 
 f = open("color_lb.pickle","rb")
