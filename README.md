@@ -1,4 +1,4 @@
-# SIH
+# Smart India Hackathon(SIH) 2020
 # Problem Statement:- Baggage and other accessories Detection and Compilation in Database
 
 ## Solution Approach:-
