@@ -63,8 +63,8 @@ model.compile(optimizer=opt, loss=losses, loss_weights=lossWeights,
 
 
 
-#f = open("type_lb.pickle","rb")
-#typeLB = pickle.loads(f.read())
+f = open("type_lb.pickle","rb")
+typeLB = pickle.loads(f.read())
 
 
 f = open("color_lb.pickle","rb")
