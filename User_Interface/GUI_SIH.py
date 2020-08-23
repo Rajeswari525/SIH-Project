@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import ttk
 import  tkinter.messagebox
-import app,output,Algorithm
+import app,output,Algo_queryimg
 from tkinter.font import *
 from tkinter import filedialog
 from tkinter import messagebox
@@ -214,7 +214,7 @@ class Main:
             video_data = app.get_Video_details(video_id)
 
         query = {'color':self.color_var.get(),'type':self.types_var.get()}
-        res = Algorithm.Algo_attribs(video_data,[query])
+        res = Algo_queryimg.Algo_attribs(video_data,[query])
         l = res
         print(l)
         if(len(l)==0):
@@ -305,7 +305,7 @@ class Main:
                 print(image_url)
                 print(len(image_url))
                 #GR you need to 
-                path_list=Algorithm.Algo(video_data,image_url,id_image,start_sec,end_sec)
+                path_list=Algo_queryimg.Algo(video_data,image_url,id_image,start_sec,end_sec)
                 global l
                 l = path_list
                 if(len(l)==0):
