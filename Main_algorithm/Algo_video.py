@@ -66,9 +66,6 @@ root = None
 res = False
 
 
-def cosineSim(a1,a2):
-    result = 1 - spatial.distance.cosine(a1[0], a2[0])
-    return result
 
 l=[]
 sec=0
