@@ -1,13 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-
-
-# In[2]:
-
 import cv2
 from math import sqrt
 from scipy import spatial
@@ -36,32 +26,6 @@ from tensorflow.keras.optimizers import Adam
  
 model = load_model('model.h5')
 
-EPOCHS = 50
-INIT_LR = 1e-3
-BS = 32
-IMAGE_DIMS = (96, 96, 3)
-
-losses = {
-    "type_output": "categorical_crossentropy",
-    "color_output": "categorical_crossentropy",
-    #"company_output":"categorical_crossentropy",
-    #"scratch_output":"binary_crossentropy",
-    #"view_output":"categorical_crossentropy"
-}
-
-lossWeights = {"type_output": 1.0, "color_output": 1.0,
-               #"company_output":1.0,
-              #"scratch_output":0.1,"view_output":1.0
-              }
-print("[INFO] compiling model...")
-opt = Adam(lr=INIT_LR, decay=INIT_LR / EPOCHS)
-model.compile(optimizer=opt, loss=losses, loss_weights=lossWeights,
-    metrics=["accuracy"],run_eagerly=True)
-
-
-
-
-
 
 f = open("type_lb.pickle","rb")
 typeLB = pickle.loads(f.read())
@@ -69,12 +33,6 @@ typeLB = pickle.loads(f.read())
 
 f = open("color_lb.pickle","rb")
 colorLB = pickle.loads(f.read())
-
-
-
-# f = open("company_lb.pickle","rb")
-# companyLB = pickle.loads(f.read())
-
 
 
 def predict(path,time):
@@ -90,15 +48,8 @@ def predict(path,time):
     return {'path':path,
     'type':typeLB.classes_[np.argmax(res[0][0])],
     'color':colorLB.classes_[np.argmax(res[1][0])],
-# 'company':companyLB.classes_[np.argmax(res[2][0])],
-    'timestamp':time
-    
+    'timestamp':time    
     }
-
-
-
-
-# In[3]:
 
 
 import tensorflow_hub as hub
@@ -137,9 +88,7 @@ def boxes(cap,detection_graph,tf_compat,categories,width, height,loc):
             while ret:
                 print(sec,c)
                 if counter == target:
-                    c+=1
-                   
-
+                    c+=1            
                     ret,image_np=cap.read()
                     if not ret:
                         break
@@ -159,8 +108,7 @@ def boxes(cap,detection_graph,tf_compat,categories,width, height,loc):
                     j=1
                     if(c==2):
                         sec+=1
-                        c=0
-                    
+                        c=0                   
                     for i in range(len(cl)):
                         if cl[i] in categories and sc[i] >= 0.30:
                             ymin = (int(box[i,0]*height))
@@ -170,25 +118,13 @@ def boxes(cap,detection_graph,tf_compat,categories,width, height,loc):
                             # print(len(box),len(sc),cl)
                             if (ymin == 0 and xmin==0 and ymax==0 and xmax==0):
                                 break
-                            #To change
-
-                            crop_img = image_np[ymin:ymax, xmin:xmax]
-
-                           
-                           
+                            crop_img = image_np[ymin:ymax, xmin:xmax]                 
                             s='i'+str(frame_no)+'_'+str(j)
                             s=os.path.join(loc,s+'.png')
-                            
                             cv2.imwrite(s, crop_img)
-                            
-                            
                             res.append({'path':s,'timestamp':sec})
-
-
-                            
                             j=j+1
                     print("Processing of Frame: "+str(frame_no) + " completed.")
-                    
                     frame_no=frame_no+1
                 else :
                     ret = cap.grab()
@@ -202,13 +138,10 @@ def boxes(cap,detection_graph,tf_compat,categories,width, height,loc):
 
 def Algo(video_path):
 
-    t1 = time.time()
-    
-
+    t1 = time.time()  
     length = len(os.listdir('SIH_Video'))
     loc=os.path.join(r'SIH_Video',str(length+1))
     os.mkdir(loc)
-    #Query image
   
     #data related to Model     
     MODEL_NAME = 'faster_rcnn_inception_v2_coco_2018_01_28'    #model currently being used (ssd_inception_v2_coco_2017_11_17 )
@@ -232,7 +165,8 @@ def Algo(video_path):
         file_name = os.path.basename(file.name)
         if 'frozen_inference_graph.pb' in file_name:
             tar_file.extract(file, os.getcwd())'''
-    #tensorflow graphs
+    
+    #tensorflow graphs -->ding tensorflow graphs into the memory
     detection_graph = tf.Graph()
     with detection_graph.as_default():
         od_graph_def = tf.compat.v1.GraphDef()
