@@ -1,13 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-
-
-# In[2]:
-
 import cv2
 from math import sqrt
 from scipy import spatial
@@ -28,9 +18,6 @@ import requests
 import tkinter as tk
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 
-
-
-# In[3]:
 
 
 import tensorflow_hub as hub
@@ -68,33 +55,6 @@ dict={}
 
 
 model = load_model('model2.model')
-
-EPOCHS = 50
-INIT_LR = 1e-3
-BS = 32
-IMAGE_DIMS = (96, 96, 3)
-
-losses = {
-    "type_output": "categorical_crossentropy",
-    "color_output": "categorical_crossentropy",
-    #"company_output":"categorical_crossentropy",
-    #"scratch_output":"binary_crossentropy",
-    #"view_output":"categorical_crossentropy"
-}
-
-lossWeights = {"type_output": 1.0, "color_output": 1.0,
-               #"company_output":1.0,
-              #"scratch_output":0.1,"view_output":1.0
-              }
-print("[INFO] compiling model...")
-opt = Adam(lr=INIT_LR, decay=INIT_LR / EPOCHS)
-model.compile(optimizer=opt, loss=losses, loss_weights=lossWeights,
-    metrics=["accuracy"],run_eagerly=True)
-
-
-
-
-
 
 f = open("type_lb.pickle","rb")
 
