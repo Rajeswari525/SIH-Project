@@ -26,4 +26,6 @@ DataBase - Firebase Realtime Database,Firebase Storage ( The Firebase Realtime D
 1) https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/
 2) https://medium.com/object-detection-using-tensorflow-and-coco-pre/object-detection-using-tensorflow-and-coco-pre-trained-models-5d8386019a8
 ## Inception Architecture
-1)https://www.geeksforgeeks.org/inception-v2-and-v3-inception-network-versions/
+1) https://www.geeksforgeeks.org/inception-v2-and-v3-inception-network-versions/
+## Multi Output Multi Label Classification
+1) https://www.pyimagesearch.com/2018/06/04/keras-multiple-outputs-and-multiple-losses/
