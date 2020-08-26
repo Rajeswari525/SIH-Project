@@ -19,3 +19,11 @@ DataBase - Firebase Realtime Database,Firebase Storage ( The Firebase Realtime D
 ![Image 1](https://github.com/Rajeswari525/SIH/blob/master/pic-1.png?raw=true)
 
 ![Image 2](https://github.com/Rajeswari525/SIH/blob/master/pic-2.png?raw=true)
+
+
+# References
+## Faster_RCNN Architecture
+1) https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/
+2) https://medium.com/object-detection-using-tensorflow-and-coco-pre/object-detection-using-tensorflow-and-coco-pre-trained-models-5d8386019a8
+## Inception Architecture
+1)https://www.geeksforgeeks.org/inception-v2-and-v3-inception-network-versions/
